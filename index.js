@@ -61,6 +61,12 @@ async function run() {
       res.json(result);
     });
 
+    app.get("/appointments/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: objectId(id) };
+      const result = await appointmentsCollection.findOne(query);
+      res.json(result);
+    });
     app.get("/users/:email", async (req, res) => {
       const email = req.params.email;
       const query = { email: email };
